@@ -79,7 +79,7 @@ const MainContent = () => {
   const AboutUs = () => {
     return (
       <>
-        <div id="aboutUs" className='mt-5 container border pt-5'>
+        <div id="aboutUs" className='mt-5 container border pt-5' style={{textAlign:'justify'}}>
           <p>
             Saba Center is a community based non-profit organization serving mainly Afghan community in Greater Houston area Texas. If you like to engage and be part of our mission, there are many ways you can contribute and help us provide better services to our community.
           </p>
@@ -94,16 +94,16 @@ const MainContent = () => {
         <section>
           <AboutUs />
 
-          <div className='d-flex flex-column flex-lg-row border border-dark justify-content-between'>
-            <div className="border border-danger m-3 px-3" id='contactUs'>
-              <p>
+          <div className='row border border-dark ' style={{textAlign:'justify'}}>
+            <div className="col-12 col-lg-4 mb-3 border border-danger  px-3" id='contactUs' style={{textAlign:'justify'}}>
+              <p className='text-justify'>
                 We would like to have contacts of as many community members in Greater Houston area as possible. If you know a new comer or someone that might not know about Saba Center, please do us a huge favor and submit their contact info clicking on the bottom below.
               </p>
               <Link to="/inviteFriend" className='btn btn-primary btn-lg'>
                 Invite Friend
               </Link>
             </div>
-            <div className="border border-warning m-3 px-3" id='donate'>
+            <div className="col-12 col-lg-4 mb-3 border border-warning  px-3" id='donate'>
               <p>
                 For any means of contribution to to Saba Center programs, use the link below or click on Donate on top menu to send our financial contribution
               </p>
@@ -111,7 +111,7 @@ const MainContent = () => {
                 One Time Contribution
               </Link>
             </div>
-            <div className="border border-primary m-3 px-3" id='inviteFriends'>
+            <div className="col-12 col-lg-4 mb-3 border border-primary px-3" id='inviteFriends'>
               <p>
                 We welcome any comments, suggestion and ideas you might have that can help us improve our services and reach out to more community members. To submit your suggestions, use contact-us page on top menu or click on bottom below.
               </p>
