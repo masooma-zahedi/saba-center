@@ -32,39 +32,46 @@ const Header = () => {
 }
 
 const MainContent = () => {
+  const carouselSize = {
+    maxHeight: window.innerHeight / 2,
+    minHeight: window.innerHeight / 2,
+    height: window.innerHeight / 2,
+  }
 
   // Main Component
   const SabaCarousel = (props) => {
     return (
-      <div id="carouselExampleControls" className="carousel slide " data-ride="carousel">
-        <div className="carousel-inner  border ">
-          <div className="carousel-item active " style={{ height: 600 }}>
-            <img className="d-block w-100 h-100" src={props.src1} alt="First slide" />
+      <div className="row justify-content-center  border border-danger" style={{ carouselSize }} >
+        <div id="carouselExampleControls" class="col col-lg-6 carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item border active" style={carouselSize}>
+              <img src={props.src1} class="d-block w-100 h-100" alt="..." />
+            </div>
+            <div class="carousel-item" style={carouselSize}>
+              <img src={props.src2} class="d-block w-100 h-100" alt="..." />
+            </div>
+            <div class="carousel-item" style={carouselSize}>
+              <img src={props.src3} class="d-block w-100 h-100" alt="..." />
+            </div>
+            <div class="carousel-item" style={carouselSize}>
+              <img src={props.src4} class="d-block w-100 h-100" alt="..." />
+            </div>
+            <div class="carousel-item" style={carouselSize}>
+              <img src={props.src5} class="d-block w-100 h-100" alt="..." />
+            </div>
+            <div class="carousel-item" style={carouselSize}>
+              <img src={props.src6} class="d-block w-100 h-100" alt="..." />
+            </div>
           </div>
-          <div className="carousel-item " style={{ height: 600 }}>
-            <img className="d-block w-100 h-100" src={props.src2} alt="Second slide" />
-          </div>
-          <div className="carousel-item " style={{ height: 600 }}>
-            <img className="d-block w-100 h-100" src={props.src3} alt="Third slide" />
-          </div>
-          <div className="carousel-item " style={{ height: 600 }}>
-            <img className="d-block w-100 h-100" src={props.src4} alt="Third slide" />
-          </div>
-          <div className="carousel-item " style={{ height: 600 }}>
-            <img className="d-block w-100 h-100" src={props.src5} alt="Third slide" />
-          </div>
-          <div className="carousel-item " style={{ height: 600 }}>
-            <img className="d-block w-100 h-100" src={props.src6} alt="Third slide" />
-          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-        <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="sr-only">Previous</span>
-        </a>
-        <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="sr-only">Next</span>
-        </a>
       </div>
     )
   }
@@ -85,7 +92,7 @@ const MainContent = () => {
     return (
       <>
         <section>
-          <AboutUs/>
+          <AboutUs />
 
           <div className='d-flex flex-column flex-lg-row border border-dark justify-content-between'>
             <div className="border border-danger m-3 px-3" id='contactUs'>
