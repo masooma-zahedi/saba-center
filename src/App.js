@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsPersonAdd } from 'react-icons/bs';
@@ -40,7 +40,7 @@ const MainContent = () => {
     height: window.innerHeight / 2,
   }
 
-  // Main Component
+  ///////////////////////////////////// Main Component
   const SabaCarousel = (props) => {
     return (
       <div className="row justify-content-center " style={{ carouselSize }} >
@@ -78,6 +78,7 @@ const MainContent = () => {
     )
   }
 
+  // /////////////////////////////// Abou Us
   const AboutUs = () => {
     return (
       <>
@@ -89,7 +90,7 @@ const MainContent = () => {
       </>
     )
   }
-
+  // ////////////////////////////////// Home Content
   const HomeContent = () => {
     return (
       <>
@@ -126,10 +127,9 @@ const MainContent = () => {
       </>
     )
   }
-  // ////////////////////////////////////////////////////
+  // /////////////////////////////////////  Invite Friends
   const InviteFriend = () => {
     const [people1, setPeople1] = useState("number");
-    const [count, setCount] = useState([])
 
     const handleChangeP = (e) => {
       setPeople1(e.target.value)
@@ -233,6 +233,7 @@ const MainContent = () => {
       </>
     )
   }
+  // ////////////////////////////// Contact Us
   const ContactUs = () => {
     return (
       <>
@@ -304,16 +305,52 @@ const MainContent = () => {
     )
   }
   const Donate = () => {
-    // const [money, setMoney] = useState('')
-    // const handleMoney = ()=>{
-      
-    // }
+    const [valMoney, setValMoney] = useState('$20 Dollars')
+    const [customTag,setCustomTag] = useState(false)
+    // const [newMoney,setNewMoney] = useState(false)
 
+// برای مبالغ دیگر هنوز کار نمی کند فقط یک عدد وارد می شود
+    const handleNewMoney = (e)=>{
+      const newMoney1 = e.target.value;
+      console.log(newMoney1);
+      // setNewMoney(true)
+      // console.log(`New money is ${newMoney}`);
+    }
+
+    const CustomMoney = ()=>{
+      if(!customTag){
+        return('')
+      }else{
+        
+        return(
+          <>
+            <div className="form-group mb-3 row">
+            <label htmlFor="amount1" className='col-12'>Custom amount <span className='text-danger'>*</span></label>
+            <input  type="number" onChange={handleNewMoney}  id="amount1" name="Custom1" placeholder='Enter the Amount' className='col-12 border rounded' required />
+          </div>
+          </>
+        )
+        }
+    }
+
+
+    // /////////////////////////// HandleMoney
+    const handleMoney = (e) => {
+      const valMoney = e.target.value;
+      if (valMoney == 'Custom Amount | مبلغ دیگر') {
+        setCustomTag(true)
+
+      }else{
+        setCustomTag(false)
+      }
+      setValMoney(valMoney)
+    }
 
     return (
       <>
-        <form action="">
-        <div className="form-row row">
+        <div className="mt-5">
+          <form action="">
+            <div className="form-row row">
               <div className="form-group col-12 col-md-6 mb-3">
                 <label htmlFor="inputFname4">First Name <span className='text-danger'>*</span> </label>
                 <input type="text" className="form-control" id="inputFname4" placeholder="First Name" required />
@@ -334,7 +371,7 @@ const MainContent = () => {
             </div>
             <div className="form-group mb-3">
               <div> Select an amount below | مبلغ را انتخاب کنید  <span className='text-danger'>*</span></div>
-              <select  className="form-select" aria-label="Default select example" required>
+              <select className="form-select" vlaue={valMoney} onChange={handleMoney} aria-label="Default select example" required>
                 <option > $20 Dollars</option>
                 <option >$30 Dollars</option>
                 <option >$50 Dollars</option>
@@ -345,7 +382,25 @@ const MainContent = () => {
                 <option >Custom Amount | مبلغ دیگر</option>
               </select>
             </div>
-        </form>
+            <div>
+              <CustomMoney/>
+            </div>
+            <div className="form-group mb-3 row">
+              <label htmlFor="" className='col-12'>Credit Card Details | مشخصات کارت اعتباری <span className='text-danger'>*</span></label>
+              <input type="" id="" name=""  placeholder='Card Number' className='col-12 border rounded' required />
+            </div>
+            <div className="form-group mb-3 row">
+              <label htmlFor="" className='col-12'>Name on Card <span className='text-danger'>*</span></label>
+              <input type="text" id="" name=""  placeholder='Card Number' className='col-12 border rounded' required />
+            </div>
+            <div className="">
+              <h4>Total charges of this transaction</h4>
+              <div className='border'><span className='border border-danger'>{valMoney } </span> </div>
+              <p>Total amount your credit card will be charged</p>
+              <p className="">مبلغ کل که از کارت شما کم خواهد شد</p>
+            </div>
+          </form>
+        </div>
       </>
     )
   }
@@ -354,7 +409,6 @@ const MainContent = () => {
 
   return (
     <Router>
-
       <div className='container' style={{ fontFamily: 'Arial, Helvetica, sans-serif', fontSize: 20 }}>
         <SabaCarousel
           src1={"./images/saba.jpg"}
