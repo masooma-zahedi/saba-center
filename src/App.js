@@ -307,17 +307,27 @@ const MainContent = () => {
   const Donate = () => {
     const [valMoney, setValMoney] = useState('$20 Dollars')
     const [customTag,setCustomTag] = useState(false)
-    // const [newMoney,setNewMoney] = useState(false)
+    const [newMoney,setNewMoney] = useState("")
+    const [val,setVal] = useState(0)
 
-// برای مبالغ دیگر هنوز کار نمی کند فقط یک عدد وارد می شود
-    const handleNewMoney = (e)=>{
-      const newMoney1 = e.target.value;
-      console.log(newMoney1);
-      // setNewMoney(true)
-      // console.log(`New money is ${newMoney}`);
+    const handleVal = (e)=>{
+      setVal(e.target.value)
+      console.log(val);
     }
+    const clickme=()=>{
+      alert(val)
+      
+    }
+// برای مبالغ دیگر هنوز کار نمی کند فقط یک عدد وارد می شود
 
     const CustomMoney = ()=>{
+      const handleNewMoney = (e)=>{
+        const newMoney1 = e.target.value
+        return newMoney1
+
+      }
+      // ////////////////////////
+      
       if(!customTag){
         return('')
       }else{
@@ -326,7 +336,7 @@ const MainContent = () => {
           <>
             <div className="form-group mb-3 row">
             <label htmlFor="amount1" className='col-12'>Custom amount <span className='text-danger'>*</span></label>
-            <input  type="number" onChange={handleNewMoney}  id="amount1" name="Custom1" placeholder='Enter the Amount' className='col-12 border rounded' required />
+            <input  type="number"  onChange={handleNewMoney}  id="amount1" name="Custom1" placeholder='Enter the Amount' className='col-12 border rounded' required />
           </div>
           </>
         )
@@ -386,12 +396,13 @@ const MainContent = () => {
               <CustomMoney/>
             </div>
             <div className="form-group mb-3 row">
-              <label htmlFor="" className='col-12'>Credit Card Details | مشخصات کارت اعتباری <span className='text-danger'>*</span></label>
-              <input type="" id="" name=""  placeholder='Card Number' className='col-12 border rounded' required />
+              <label htmlFor="cardNumber" className='col-12'>Credit Card Details | مشخصات کارت اعتباری <span className='text-danger'>*</span></label>
+              <input type="number" id="cardNumber" value={val} onChange={handleVal} name="cardNumber"  placeholder='Card Number' className='col-12 border rounded' required />
+              <button className='btn btn-success'onClick={clickme} >clickme</button>
             </div>
             <div className="form-group mb-3 row">
-              <label htmlFor="" className='col-12'>Name on Card <span className='text-danger'>*</span></label>
-              <input type="text" id="" name=""  placeholder='Card Number' className='col-12 border rounded' required />
+              <label htmlFor="nameCard" className='col-12'>Name on Card <span className='text-danger'>*</span></label>
+              <input type="text" id="nameCard" name="nameCard"  placeholder='Card Number' className='col-12 border rounded' required />
             </div>
             <div className="">
               <h4>Total charges of this transaction</h4>
