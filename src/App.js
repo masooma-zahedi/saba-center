@@ -316,6 +316,7 @@ const MainContent = () => {
     }
     const clickme=()=>{
       alert(val)
+      setValMoney(`$${val} Dollers`)
       
     }
 // برای مبالغ دیگر هنوز کار نمی کند فقط یک عدد وارد می شود
@@ -349,7 +350,7 @@ const MainContent = () => {
       const valMoney = e.target.value;
       if (valMoney == 'Custom Amount | مبلغ دیگر') {
         setCustomTag(true)
-
+        document.querySelector("#cardNumber").disabled = false;
       }else{
         setCustomTag(false)
       }
@@ -392,12 +393,12 @@ const MainContent = () => {
                 <option >Custom Amount | مبلغ دیگر</option>
               </select>
             </div>
-            <div>
+            {/* <div>
               <CustomMoney/>
-            </div>
-            <div className="form-group mb-3 row">
-              <label htmlFor="cardNumber" className='col-12'>Credit Card Details | مشخصات کارت اعتباری <span className='text-danger'>*</span></label>
-              <input type="number" id="cardNumber" value={val} onChange={handleVal} name="cardNumber"  placeholder='Card Number' className='col-12 border rounded' required />
+            </div> */}
+            <div className="form-group mb-3 row ">
+              <label htmlFor="cardNumber" className='col-12'>custom amount : <span className='text-danger'>*</span></label>
+              <input type="number" id="cardNumber" disabled  value={val} onChange={handleVal} name="cardNumber"  placeholder='Card Number' className='col-12 border rounded' required />
               <button className='btn btn-success'onClick={clickme} >clickme</button>
             </div>
             <div className="form-group mb-3 row">
