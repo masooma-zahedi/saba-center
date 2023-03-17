@@ -307,42 +307,17 @@ const MainContent = () => {
   const Donate = () => {
     const [valMoney, setValMoney] = useState('$20 Dollars')
     const [customTag,setCustomTag] = useState(false)
-    const [newMoney,setNewMoney] = useState("")
-    const [val,setVal] = useState(0)
+    const [val,setVal] = useState(null)
 
     const handleVal = (e)=>{
       setVal(e.target.value)
       console.log(val);
     }
-    const clickme=()=>{
-      alert(val)
+    const clickAmount=()=>{
       setValMoney(`$${val} Dollers`)
       
     }
-// برای مبالغ دیگر هنوز کار نمی کند فقط یک عدد وارد می شود
 
-    const CustomMoney = ()=>{
-      const handleNewMoney = (e)=>{
-        const newMoney1 = e.target.value
-        return newMoney1
-
-      }
-      // ////////////////////////
-      
-      if(!customTag){
-        return('')
-      }else{
-        
-        return(
-          <>
-            <div className="form-group mb-3 row">
-            <label htmlFor="amount1" className='col-12'>Custom amount <span className='text-danger'>*</span></label>
-            <input  type="number"  onChange={handleNewMoney}  id="amount1" name="Custom1" placeholder='Enter the Amount' className='col-12 border rounded' required />
-          </div>
-          </>
-        )
-        }
-    }
 
 
     // /////////////////////////// HandleMoney
@@ -350,7 +325,7 @@ const MainContent = () => {
       const valMoney = e.target.value;
       if (valMoney == 'Custom Amount | مبلغ دیگر') {
         setCustomTag(true)
-        document.querySelector("#cardNumber").disabled = false;
+        document.querySelector("#customA").disabled = false;
       }else{
         setCustomTag(false)
       }
@@ -393,13 +368,14 @@ const MainContent = () => {
                 <option >Custom Amount | مبلغ دیگر</option>
               </select>
             </div>
-            {/* <div>
-              <CustomMoney/>
-            </div> */}
-            <div className="form-group mb-3 row ">
-              <label htmlFor="cardNumber" className='col-12'>custom amount : <span className='text-danger'>*</span></label>
-              <input type="number" id="cardNumber" disabled  value={val} onChange={handleVal} name="cardNumber"  placeholder='Card Number' className='col-12 border rounded' required />
-              <button className='btn btn-success'onClick={clickme} >clickme</button>
+            <div className= {` form-group mb-3 row ${customTag ? "" : "d-none"} `} >
+              <label htmlFor="customA" className='col-12'>custom amount : <span className='text-danger'>*</span></label>
+              <input type="number" id="customA" disabled  value={val} onChange={handleVal} name="cardNumber"  placeholder='New Amount' className='col-12 border rounded' required />
+              <button className='btn btn-success'onClick={clickAmount} >Insert Amount</button>
+            </div>
+            <div className="form-group mb-3 row">
+              <label htmlFor="cardNumber" className='col-12'>Credit Card Details | مشخصات کارت اعتباری <span className='text-danger'>*</span></label>
+              <input type="number" id="cardNumber" name="cardNumber"  placeholder='Card Number' className='col-12 border rounded' required />
             </div>
             <div className="form-group mb-3 row">
               <label htmlFor="nameCard" className='col-12'>Name on Card <span className='text-danger'>*</span></label>
@@ -407,7 +383,7 @@ const MainContent = () => {
             </div>
             <div className="">
               <h4>Total charges of this transaction</h4>
-              <div className='border'><span className='border border-danger'>{valMoney } </span> </div>
+              <div className='border'><span className='text-success px-2'>{valMoney } </span> </div>
               <p>Total amount your credit card will be charged</p>
               <p className="">مبلغ کل که از کارت شما کم خواهد شد</p>
             </div>
